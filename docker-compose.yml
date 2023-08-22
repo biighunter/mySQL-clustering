@@ -2,15 +2,13 @@ version: '3'
 
 services:
   database:
-    image: mysql:latest
+    image: mysql:5.7
     restart: always
     environment:
       - MYSQL_DATABASE=hunt-db
       - MYSQL_USER=biighunter
       - MYSQL_PASSWORD=1122
       - MYSQL_ROOT_PASSWORD=1122
-      - MYSQL_INITDB_SKIP_TZINFO=1
-      - MYSQL_MY_CUSTOM_VAR=my-custom-value 
     ports:
       - "3306:3306"
     expose:
