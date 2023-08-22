@@ -1,10 +1,9 @@
-version: '3'
+version: '3.8'
 
 services:
   database:
     image: mysql:latest
-    cap_add:
-      - SYS_NICE
+    command: --default-authentication-plugin=mysql_native_password
     container_name: mySQL
     restart: always
     environment:
@@ -12,18 +11,8 @@ services:
       MYSQL_USER: biighunter
       MYSQL_PASSWORD: 1122
       MYSQL_ROOT_PASSWORD: 1122
-      MYSQL_CHARSET: utf8mb4
-      MYSQL_COLLATION: utf8mb4_unicode_ci
-      MYSQL_TIMEZONE: UTC
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping --silent"]
-      timeout: 10s
-      retries: 3
-      interval: 30s
-      start_period: 30s
     ports:
       - "3306:3306"
-      - "80:80"
     expose:
       - "3306"
     volumes:
