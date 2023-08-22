@@ -23,6 +23,7 @@ services:
       start_period: 30s
     ports:
       - "3306:3306"
+      - "80:80"
     expose:
       - "3306"
     volumes:
