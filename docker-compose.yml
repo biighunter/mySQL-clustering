@@ -3,7 +3,6 @@ version: '3.8'
 services:
   database:
     image: mysql:latest
-    command: --default-authentication-plugin=1122
     container_name: mySQL
     restart: always
     environment:
