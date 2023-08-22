@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=hunt-db
+      - MYSQL_USER=biighunter
+      - MYSQL_PASSWORD=1122
+      - MYSQL_ROOT_PASSWORD=1122
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - mysql-db:/var/lib/mysql
+volumes:
+  mysql-db:
