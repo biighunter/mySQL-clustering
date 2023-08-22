@@ -9,8 +9,8 @@ services:
     restart: always
     environment:
       - MYSQL_DATABASE=hunt-db
-      # - MYSQL_USER=biighunter
-      # - MYSQL_PASSWORD=1122
+      - MYSQL_USER=biighunter
+      - MYSQL_PASSWORD=1122
       - MYSQL_ROOT_PASSWORD=1122
     ports:
       - "3306:3306"
