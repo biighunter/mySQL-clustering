@@ -14,6 +14,13 @@ services:
       MYSQL_ROOT_PASSWORD: 1122
       MYSQL_CHARSET: utf8mb4
       MYSQL_COLLATION: utf8mb4_unicode_ci
+      MYSQL_TIMEZONE: UTC
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping --silent"]
+      timeout: 10s
+      retries: 3
+      interval: 30s
+      start_period: 30s
     ports:
       - "3306:3306"
     expose:
