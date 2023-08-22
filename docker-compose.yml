@@ -2,13 +2,15 @@ version: '3'
 
 services:
   database:
-    image: mysql:5.7
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
     container_name: mySQL
     restart: always
     environment:
       - MYSQL_DATABASE=hunt-db
-      - MYSQL_USER=biighunter
-      - MYSQL_PASSWORD=1122
+      # - MYSQL_USER=biighunter
+      # - MYSQL_PASSWORD=1122
       - MYSQL_ROOT_PASSWORD=1122
     ports:
       - "3306:3306"
