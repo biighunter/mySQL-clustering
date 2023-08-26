@@ -18,7 +18,7 @@ docker-compose build
 docker-compose up -d
 
 for container in "${all_containers[@]}";do
-  until docker exec $container sh -c 'export MYSQL_PWD='$root_password'; mysql -u root -e ";"'
+  until docker exec $container sh -c 'export MYSQL_PWD='$root_password'; mysql -u biighunter -e ";"'
   do
       echo "等待 $container 连接中,请稍候,每 ${retry_duration}s 尝试连接一次,可能会重试多次,直到容器启动完毕......"
       sleep $retry_duration
@@ -27,7 +27,7 @@ done
 
 priv_stmt='GRANT REPLICATION SLAVE ON *.* TO "'$mysql_user'"@"%" IDENTIFIED BY "'$mysql_password'"; FLUSH PRIVILEGES;'
 
-docker exec $master_container sh -c "export MYSQL_PWD='$root_password'; mysql -u root -e '$priv_stmt'"
+docker exec $master_container sh -c "export MYSQL_PWD='$root_password'; mysql -u biighunter -e '$priv_stmt'"
 
 MS_STATUS=`docker exec $master_container sh -c 'export MYSQL_PWD='$root_password'; mysql -u root -e "SHOW MASTER STATUS"'`
 
