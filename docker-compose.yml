@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql_master:
-    image: mysql:5.7
+    image: mysql:latest
     env_file:
       - ./master/mysql_master.env
     container_name: "mysql_master"
